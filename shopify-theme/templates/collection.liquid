@@ -1,0 +1,23 @@
+<div class="collection-page">
+  <div class="collection-title">{{ collection.title | upcase }}.</div>
+  <div class="products-grid" id="productGrid">
+    {% for product in collection.products %}
+      {% render 'product-card', product: product, index: forloop.index0 %}
+    {% endfor %}
+  </div>
+
+  {% if collection.products.size == 0 %}
+    <div style="text-align:center;padding:80px 20px">
+      <div style="font-family:var(--font-d);font-size:clamp(32px,5vw,64px);color:var(--muted)">NOTHING HERE YET.</div>
+      <p style="font-size:13px;color:rgba(245,245,240,.3);margin-top:12px">Check back soon for new drops.</p>
+    </div>
+  {% endif %}
+
+  {% if paginate.pages > 1 %}
+    <div style="text-align:center;margin-top:40px">
+      {{ paginate | default_pagination }}
+    </div>
+  {% endif %}
+</div>
+
+{% section 'footer' %}

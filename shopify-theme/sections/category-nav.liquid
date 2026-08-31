@@ -1,0 +1,22 @@
+<div id="category-nav">
+  <div class="cat-nav-scroll">
+    <button class="cat-item active" data-cat="all">ALL</button>
+    {% for collection in collections %}
+      {% unless collection.handle == 'all' or collection.handle == 'frontpage' %}
+        <button class="cat-item" data-cat="{{ collection.handle }}">{{ collection.title | upcase }}</button>
+      {% endunless %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Category Navigation",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Category Navigation"
+    }
+  ]
+}
+{% endschema %}

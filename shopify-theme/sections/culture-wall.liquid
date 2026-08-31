@@ -1,0 +1,123 @@
+<section id="culture">
+  <div class="culture-head reveal">{{ section.settings.heading | default: 'real ones' }}<span class="dot">●</span></div>
+  <div class="ugc-grid" id="ugcGrid">
+    {% for block in section.blocks %}
+      {% case block.settings.type %}
+        {% when 'instagram' %}
+          <div class="ugc-card ugc-ig reveal" {{ block.shopify_attributes }}>
+            <div class="ugc-ig-head">
+              <div class="ugc-avatar">
+                {% if block.settings.avatar %}
+                  <img src="{{ block.settings.avatar | image_url: width: 56 }}" alt="">
+                {% else %}
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=56&h=56&fit=crop&crop=face" alt="">
+                {% endif %}
+              </div>
+              <div><div class="ugc-uname">{{ block.settings.username }}</div><div class="ugc-tag">@ BOHOO</div></div>
+            </div>
+            <div class="ugc-ig-img">
+              {% if block.settings.image %}
+                <img src="{{ block.settings.image | image_url: width: 400 }}" alt="fit" loading="lazy">
+              {% endif %}
+            </div>
+            <div class="ugc-ig-foot"><div class="ugc-likes">♡ {{ block.settings.likes }}</div><div class="ugc-caption">{{ block.settings.caption }}</div></div>
+          </div>
+
+        {% when 'whatsapp' %}
+          <div class="ugc-card ugc-wa reveal" {{ block.shopify_attributes }}>
+            <div class="ugc-wa-bubble"><div class="ugc-wa-text">{{ block.settings.msg1 }}</div></div>
+            <div class="ugc-wa-reply"><div class="ugc-wa-text">{{ block.settings.msg2 }}</div></div>
+            <div class="ugc-wa-bubble"><div class="ugc-wa-text">{{ block.settings.msg3 }}</div></div>
+            <div class="ugc-wa-meta">✓✓ · Yesterday</div>
+          </div>
+
+        {% when 'tweet' %}
+          <div class="ugc-card ugc-tweet reveal" {{ block.shopify_attributes }}>
+            <div class="ugc-tweet-head">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--bg3);flex-shrink:0;overflow:hidden">
+                {% if block.settings.avatar %}
+                  <img src="{{ block.settings.avatar | image_url: width: 56 }}" alt="" style="width:100%;height:100%;object-fit:cover">
+                {% else %}
+                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=56&h=56&fit=crop&crop=face" alt="" style="width:100%;height:100%;object-fit:cover">
+                {% endif %}
+              </div>
+              <div><div class="ugc-tweet-name">{{ block.settings.name }}</div><div class="ugc-tweet-handle">{{ block.settings.handle }} · {{ block.settings.timestamp }}</div></div>
+            </div>
+            <div class="ugc-tweet-text">{{ block.settings.text }}</div>
+            <div class="ugc-tweet-stats"><span class="ugc-tweet-stat">♡ {{ block.settings.likes }}</span><span class="ugc-tweet-stat">↩ {{ block.settings.retweets }}</span></div>
+          </div>
+
+        {% when 'sms' %}
+          <div class="ugc-card ugc-sms reveal" {{ block.shopify_attributes }}>
+            <div class="sms-time">today</div>
+            <div class="sms-bubble-in">{{ block.settings.msg1 }}</div>
+            <div class="sms-bubble-out">{{ block.settings.msg2 }}</div>
+            <div class="sms-bubble-in">{{ block.settings.msg3 }}</div>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Culture Wall",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "real ones"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "instagram",
+      "name": "Instagram Post",
+      "settings": [
+        { "type": "text", "id": "username", "label": "Username", "default": "@user" },
+        { "type": "image_picker", "id": "avatar", "label": "Avatar" },
+        { "type": "image_picker", "id": "image", "label": "Post Image" },
+        { "type": "text", "id": "likes", "label": "Likes", "default": "847" },
+        { "type": "text", "id": "caption", "label": "Caption", "default": "arrived ✅ the fit goes crazy fr" }
+      ]
+    },
+    {
+      "type": "whatsapp",
+      "name": "WhatsApp Chat",
+      "settings": [
+        { "type": "text", "id": "msg1", "label": "Message 1", "default": "bhai hoodie worth hai kya?" },
+        { "type": "text", "id": "msg2", "label": "Reply", "default": "320gsm cotton hai bhai. fire hai 🔥" },
+        { "type": "text", "id": "msg3", "label": "Message 3", "default": "buying rn" }
+      ]
+    },
+    {
+      "type": "tweet",
+      "name": "Tweet",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "Dev Shah" },
+        { "type": "text", "id": "handle", "label": "Handle", "default": "@devshah_vdr" },
+        { "type": "image_picker", "id": "avatar", "label": "Avatar" },
+        { "type": "text", "id": "timestamp", "label": "Timestamp", "default": "2h" },
+        { "type": "text", "id": "text", "label": "Tweet Text" },
+        { "type": "text", "id": "likes", "label": "Likes", "default": "284" },
+        { "type": "text", "id": "retweets", "label": "Retweets", "default": "67" }
+      ]
+    },
+    {
+      "type": "sms",
+      "name": "SMS Chat",
+      "settings": [
+        { "type": "text", "id": "msg1", "label": "Message 1" },
+        { "type": "text", "id": "msg2", "label": "Reply (green bubble)" },
+        { "type": "text", "id": "msg3", "label": "Message 3" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Culture Wall"
+    }
+  ]
+}
+{% endschema %}

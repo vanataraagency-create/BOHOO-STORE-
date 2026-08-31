@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }} — {{ shop.name }}</title>
+  <meta name="description" content="{{ page_description | default: shop.description }}">
+
+  {{ content_for_header }}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  {{ 'bohoo.css' | asset_url | stylesheet_tag }}
+</head>
+<body>
+
+  {% render 'cursor' %}
+  {% render 'loader' %}
+
+  {% section 'header' %}
+
+  {% render 'menu-overlay' %}
+
+  <main id="main" role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {% render 'cart-drawer' %}
+  {% render 'search-overlay' %}
+  {% render 'toast' %}
+  {% render 'cookie-banner' %}
+
+  <div id="toast-container"></div>
+
+  <script src="{{ 'bohoo.js' | asset_url }}" defer></script>
+</body>
+</html>

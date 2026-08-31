@@ -1,0 +1,57 @@
+<section id="drop">
+  <div class="drop-head reveal">
+    <div class="drop-title">{{ section.settings.title | default: 'THE DROP.' }}</div>
+    <div class="drop-sub">{{ section.settings.subtitle | default: 'ss25 · limited pieces · while they last' }}</div>
+  </div>
+  <div class="products-grid" id="productGrid">
+    {% assign collection = collections[section.settings.collection] %}
+    {% if collection %}
+      {% for product in collection.products limit: section.settings.products_limit %}
+        {% render 'product-card', product: product, index: forloop.index0 %}
+      {% endfor %}
+    {% else %}
+      {% for product in collections.all.products limit: section.settings.products_limit %}
+        {% render 'product-card', product: product, index: forloop.index0 %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "THE DROP."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "ss25 · limited pieces · while they last"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Products to Show",
+      "min": 4,
+      "max": 24,
+      "step": 4,
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Grid"
+    }
+  ]
+}
+{% endschema %}

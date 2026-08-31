@@ -1,0 +1,23 @@
+<section id="statement">
+  <div class="statement-words">
+    <span class="sw"><span class="sw-inner" id="sw1">{{ section.settings.word1 | default: 'NOT' }}</span></span>
+    <span class="sw"><span class="sw-inner" id="sw2">{{ section.settings.word2 | default: 'FOR' }}</span></span>
+    <span class="sw"><span class="sw-inner" id="sw3">{{ section.settings.word3 | default: 'EVERYONE.' }}</span></span>
+  </div>
+  <div class="statement-foot">
+    <p>{{ section.settings.footer_text | default: 'premium streetwear from vadodara.<br>since whenever you discovered us.' }}</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Statement",
+  "settings": [
+    { "type": "text", "id": "word1", "label": "Word 1", "default": "NOT" },
+    { "type": "text", "id": "word2", "label": "Word 2", "default": "FOR" },
+    { "type": "text", "id": "word3", "label": "Word 3", "default": "EVERYONE." },
+    { "type": "richtext", "id": "footer_text", "label": "Footer Text" }
+  ],
+  "presets": [{ "name": "Statement" }]
+}
+{% endschema %}

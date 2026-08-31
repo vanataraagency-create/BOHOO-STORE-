@@ -1,0 +1,35 @@
+<div class="collection-page" style="padding-top:100px">
+  <div class="cart-top-title" style="font-size:clamp(48px,10vw,120px);margin-bottom:32px">{{ 'general.bag' | t }}</div>
+
+  {% if cart.item_count == 0 %}
+    <div style="text-align:center;padding:80px 20px">
+      <div style="font-size:60px;margin-bottom:16px">🛍</div>
+      <div style="font-family:var(--font-d);font-size:32px;color:var(--muted);margin-bottom:24px">{{ 'general.cart_empty' | t }}</div>
+      <a href="/collections/all" class="btn-acid">{{ 'general.shop_the_drop' | t }}</a>
+    </div>
+  {% else %}
+    {% for item in cart.items %}
+      <div class="cart-item" style="margin-bottom:8px">
+        <img class="ci-img" src="{{ item.image | image_url: width: 120 }}" alt="{{ item.title }}">
+        <div class="ci-info">
+          <div class="ci-name">{{ item.title }}</div>
+          <div class="ci-sz">SIZE: {{ item.variant.title | default: 'OS' }} · QTY: {{ item.quantity }}</div>
+          <div class="ci-pr">{{ item.line_price | money }}</div>
+        </div>
+        <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="ci-rm" style="text-decoration:none">×</a>
+      </div>
+    {% endfor %}
+
+    <div style="border-top:1px solid var(--border);padding-top:20px;margin-top:20px">
+      <div class="cart-sub">
+        <span class="cart-sub-label">{{ 'general.subtotal' | t }}</span>
+        <span class="cart-sub-amt">{{ cart.total_price | money }}</span>
+      </div>
+      <form action="/cart" method="post">
+        <button type="submit" name="checkout" class="checkout-btn">{{ 'general.checkout' | t }}</button>
+      </form>
+    </div>
+  {% endif %}
+</div>
+
+{% section 'footer' %}

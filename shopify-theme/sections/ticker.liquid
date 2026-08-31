@@ -1,0 +1,44 @@
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    {% for i in (1..2) %}
+      {% for block in section.blocks %}
+        <span class="ticker-item">{{ block.settings.text }}</span>
+        <span class="ticker-item">·</span>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Ticker",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Ticker Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "NEW DROP"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ticker",
+      "blocks": [
+        { "type": "item", "settings": { "text": "NEW DROP" } },
+        { "type": "item", "settings": { "text": "4 PIECES LEFT" } },
+        { "type": "item", "settings": { "text": "VADODARA" } },
+        { "type": "item", "settings": { "text": "FREE SHIP ₹999+" } },
+        { "type": "item", "settings": { "text": "BOHOO SS25" } },
+        { "type": "item", "settings": { "text": "REAL ONES ONLY" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

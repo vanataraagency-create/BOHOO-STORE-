@@ -1,0 +1,51 @@
+<div id="urgency">
+  <div class="urgency-grid">
+    <div class="u-stat reveal">
+      <div class="u-num" id="viewCount">{{ section.settings.initial_viewers | default: 47 }}</div>
+      <div class="u-label">{{ 'general.people_viewing' | t }}</div>
+    </div>
+    <div class="u-stat reveal" style="transition-delay:.08s">
+      <div class="u-num mono" id="lastBuy">{{ section.settings.last_purchase | default: '12 MIN AGO' }}</div>
+      <div class="u-label">{{ 'general.last_purchase' | t }}</div>
+    </div>
+    <div class="u-stat reveal" style="transition-delay:.16s">
+      <div class="u-num mono" id="countdown">02:14:33</div>
+      <div class="u-label">{{ 'general.next_drop' | t }}</div>
+    </div>
+    <div class="u-stat reveal" style="transition-delay:.24s">
+      <div class="u-num white">{{ section.settings.pieces_sold | default: '1,247+' }}</div>
+      <div class="u-label">{{ 'general.pieces_sold' | t }}</div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Urgency Bar",
+  "settings": [
+    {
+      "type": "number",
+      "id": "initial_viewers",
+      "label": "Initial Viewer Count",
+      "default": 47
+    },
+    {
+      "type": "text",
+      "id": "last_purchase",
+      "label": "Last Purchase Text",
+      "default": "12 MIN AGO"
+    },
+    {
+      "type": "text",
+      "id": "pieces_sold",
+      "label": "Pieces Sold",
+      "default": "1,247+"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Urgency Bar"
+    }
+  ]
+}
+{% endschema %}

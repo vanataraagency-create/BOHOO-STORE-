@@ -1,0 +1,43 @@
+<div id="search-overlay">
+  <div class="search-container">
+    <div class="search-sticky-header">
+      <div class="search-top-row">
+        <button class="search-close-btn" id="searchCloseBtn">✕ CLOSE</button>
+      </div>
+      <div class="search-header">
+        <h2>{{ 'general.find_your_fit' | t | split: '.' | first }}<em>.{{ 'general.find_your_fit' | t | split: '.' | last }}</em></h2>
+        <p>{{ 'general.search_desc' | t }}</p>
+      </div>
+      <div class="search-input-wrap">
+        <input type="text" id="searchInput" placeholder="{{ 'general.search_placeholder' | t }}" autocomplete="off">
+        <div class="search-input-line"></div>
+      </div>
+      <div class="search-filters">
+        <button class="filter-pill active" data-filter="all">ALL</button>
+        {% for collection in collections %}
+          {% unless collection.handle == 'all' or collection.handle == 'frontpage' %}
+            <button class="filter-pill" data-filter="{{ collection.handle }}">{{ collection.title | upcase }}</button>
+          {% endunless %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="search-content-area" style="padding-top: 30px;">
+      <div id="featured-searches">
+        <h3>{{ 'general.featured_searches' | t }}</h3>
+        <div class="featured-list">
+          <button class="feat-item" data-query="oversized tees">OVERSIZED TEES</button>
+          <button class="feat-item" data-query="cargo bottoms">CARGO BOTTOMS</button>
+          <button class="feat-item" data-query="street caps">STREET CAPS</button>
+          <button class="feat-item" data-query="silver watches">SILVER WATCHES</button>
+          <button class="feat-item" data-query="minimal bags">MINIMAL BAGS</button>
+          <button class="feat-item" data-query="premium socks">PREMIUM SOCKS</button>
+        </div>
+      </div>
+      <div id="search-results-grid" class="products-grid" style="display: none;"></div>
+      <div id="search-empty-state" style="display: none;">
+        <div class="se-title">{{ 'general.no_matches' | t }}</div>
+        <div class="se-sub">{{ 'general.no_matches_sub' | t }}</div>
+      </div>
+    </div>
+  </div>
+</div>

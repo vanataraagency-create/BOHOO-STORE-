@@ -1,0 +1,55 @@
+<section id="store">
+  <div class="store-headline reveal">
+    <span class="store-h1">{{ section.settings.heading1 | default: 'irl.' }}</span>
+    <span class="store-h2">{{ section.settings.heading2 | default: 'find us.' }}</span>
+  </div>
+  <div class="store-cards">
+    {% for block in section.blocks %}
+      <div class="s-card reveal" style="transition-delay:{{ forloop.index0 | times: 0.08 }}s;{% if block.settings.coming_soon %}opacity:.5{% endif %}" {{ block.shopify_attributes }}>
+        <div class="s-city">
+          {{ block.settings.city }}
+          {% if block.settings.active %}
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--acid);display:inline-block;margin-left:4px"></span>
+          {% endif %}
+          {% if block.settings.coming_soon %}
+            <span class="soon-pill">SOON</span>
+          {% endif %}
+        </div>
+        <div class="s-addr">{{ block.settings.address }}</div>
+        {% unless block.settings.coming_soon %}
+          {% if block.settings.maps_url != blank %}
+            <a href="{{ block.settings.maps_url }}" class="s-dir">GET DIRECTIONS →</a>
+          {% endif %}
+        {% endunless %}
+      </div>
+    {% endfor %}
+  </div>
+  {% if section.settings.phone != blank %}
+    <a href="tel:{{ section.settings.phone }}" class="store-phone reveal" style="transition-delay:.24s;margin-top:16px">📞 {{ section.settings.phone }}</a>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Store Locations",
+  "settings": [
+    { "type": "text", "id": "heading1", "label": "Heading Line 1", "default": "irl." },
+    { "type": "text", "id": "heading2", "label": "Heading Line 2", "default": "find us." },
+    { "type": "text", "id": "phone", "label": "Phone Number", "default": "8200669651" }
+  ],
+  "blocks": [
+    {
+      "type": "location",
+      "name": "Store Location",
+      "settings": [
+        { "type": "text", "id": "city", "label": "City", "default": "VADODARA" },
+        { "type": "richtext", "id": "address", "label": "Address" },
+        { "type": "url", "id": "maps_url", "label": "Google Maps URL" },
+        { "type": "checkbox", "id": "active", "label": "Active (green dot)", "default": true },
+        { "type": "checkbox", "id": "coming_soon", "label": "Coming Soon", "default": false }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Store Locations" }]
+}
+{% endschema %}

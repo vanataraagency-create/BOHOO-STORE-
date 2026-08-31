@@ -1,0 +1,70 @@
+<section id="testimonials">
+  <div class="test-head reveal">{{ section.settings.heading | default: 'they said it.' }}</div>
+  <div class="test-sub reveal" style="transition-delay:.1s">{{ section.settings.subheading | default: 'not us. them.' }}</div>
+  <div class="dm-grid">
+    {% for block in section.blocks %}
+      <div class="dm-card reveal" style="transition-delay:{{ forloop.index0 | times: 0.1 }}s" {{ block.shopify_attributes }}>
+        <div class="dm-head">
+          <div class="dm-av">
+            {% if block.settings.avatar %}
+              <img src="{{ block.settings.avatar | image_url: width: 64 }}" alt="">
+            {% else %}
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face" alt="">
+            {% endif %}
+          </div>
+          <div style="flex:1"><div class="dm-handle">{{ block.settings.handle }}</div></div>
+          <span class="dm-following">following</span>
+        </div>
+        <div class="dm-body">
+          {% if block.settings.msg_in_1 != blank %}
+            <div class="bubble bubble-in">{{ block.settings.msg_in_1 }}</div>
+          {% endif %}
+          {% if block.settings.msg_out_1 != blank %}
+            <div class="bubble bubble-out">{{ block.settings.msg_out_1 }}</div>
+          {% endif %}
+          {% if block.settings.msg_in_2 != blank %}
+            <div class="bubble bubble-in">{{ block.settings.msg_in_2 }}</div>
+          {% endif %}
+          {% if block.settings.msg_in_3 != blank %}
+            <div class="bubble bubble-in">{{ block.settings.msg_in_3 }}</div>
+          {% endif %}
+          {% if block.settings.reaction != blank %}
+            <div class="bubble-react">{{ block.settings.reaction }}</div>
+          {% endif %}
+          <div class="dm-ts">{{ block.settings.timestamp | default: 'seen · yesterday' }}</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "they said it." },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "not us. them." }
+  ],
+  "blocks": [
+    {
+      "type": "dm",
+      "name": "DM Conversation",
+      "settings": [
+        { "type": "text", "id": "handle", "label": "Username", "default": "@user" },
+        { "type": "image_picker", "id": "avatar", "label": "Avatar" },
+        { "type": "text", "id": "msg_in_1", "label": "Incoming Message 1" },
+        { "type": "text", "id": "msg_out_1", "label": "Reply (outgoing)" },
+        { "type": "text", "id": "msg_in_2", "label": "Incoming Message 2" },
+        { "type": "text", "id": "msg_in_3", "label": "Incoming Message 3" },
+        { "type": "text", "id": "reaction", "label": "Reaction Emoji" },
+        { "type": "text", "id": "timestamp", "label": "Timestamp", "default": "seen · yesterday 10:43 PM" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials"
+    }
+  ]
+}
+{% endschema %}

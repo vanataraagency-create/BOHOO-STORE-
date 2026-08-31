@@ -1,0 +1,44 @@
+<div class="product-page">
+  <div class="product-layout">
+    <div class="product-gallery">
+      {% if product.featured_image %}
+        <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title }}">
+      {% endif %}
+      {% for image in product.images offset: 1 %}
+        <img src="{{ image | image_url: width: 800 }}" alt="{{ product.title }}" loading="lazy" style="margin-top:8px">
+      {% endfor %}
+    </div>
+    <div class="product-details">
+      <h1>{{ product.title }}</h1>
+      <div class="product-price">{{ product.selected_or_first_available_variant.price | money }}</div>
+      {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+        <div class="product-mrp">{{ product.selected_or_first_available_variant.compare_at_price | money }}</div>
+      {% endif %}
+      <div class="product-desc">{{ product.description }}</div>
+
+      {% if product.variants.size > 1 %}
+        <div class="size-selector">
+          {% for variant in product.variants %}
+            <button class="size-btn {% if forloop.first %}active{% endif %}" data-variant="{{ variant.id }}" {% unless variant.available %}disabled style="opacity:.3"{% endunless %}>
+              {{ variant.title }}
+            </button>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <button class="add-to-cart-btn" data-variant="{{ product.selected_or_first_available_variant.id }}" {% unless product.available %}disabled{% endunless %}>
+        {% if product.available %}ADD TO BAG{% else %}SOLD OUT{% endif %}
+      </button>
+
+      {% if product.tags.size > 0 %}
+        <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:8px">
+          {% for tag in product.tags %}
+            <span style="font-family:var(--font-m);font-size:9px;letter-spacing:.15em;color:var(--muted);border:1px solid var(--border);padding:4px 10px;text-transform:uppercase">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% section 'footer' %}

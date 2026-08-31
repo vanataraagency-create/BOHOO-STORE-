@@ -1,0 +1,27 @@
+<div id="menu-overlay">
+  <button class="menu-x" id="menuX">✕</button>
+  <nav class="menu-links">
+    <a class="menu-link" href="/collections/all" style="transition-delay:.05s">NEW DROP</a>
+    <a class="menu-link" href="/#culture" style="transition-delay:.1s">CULTURE</a>
+    <a class="menu-link" href="/#lookbook" style="transition-delay:.15s">LOOKBOOK</a>
+    <a class="menu-link" href="/#store" style="transition-delay:.2s">IRL</a>
+    <a class="menu-link" href="/#waitlist" style="transition-delay:.25s">WAITLIST</a>
+    <a class="menu-link" href="/pages/about" style="transition-delay:.3s">ABOUT</a>
+  </nav>
+  <div class="menu-foot">
+    <div class="menu-social">
+      {% if settings.social_instagram != blank %}
+        <a href="{{ settings.social_instagram }}">INSTAGRAM</a>
+      {% endif %}
+      {% if settings.social_whatsapp != blank %}
+        <a href="https://wa.me/{{ settings.social_whatsapp }}">WHATSAPP</a>
+      {% endif %}
+      {% if settings.social_facebook != blank %}
+        <a href="{{ settings.social_facebook }}">FACEBOOK</a>
+      {% endif %}
+    </div>
+    {% if settings.store_phone != blank %}
+      <div class="menu-phone-lbl">{{ settings.store_phone }}</div>
+    {% endif %}
+  </div>
+</div>

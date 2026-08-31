@@ -1,0 +1,43 @@
+<section id="waitlist">
+  <div class="wl-grid">
+    <div class="wl-left">
+      <h2>{{ section.settings.heading | default: "don't<br>miss<br>the drop." }}</h2>
+      <p>{{ section.settings.subheading | default: "we'll reach out when it happens." }}</p>
+    </div>
+    <div>
+      <div class="notif-mock">
+        <div class="notif-head">
+          <div class="notif-icon">B</div>
+          <div>
+            <div class="notif-title">{{ shop.name }}</div>
+            <div class="notif-body">new drop alert</div>
+          </div>
+        </div>
+        <div class="notif-msg" id="notifMsg">new drop just dropped.</div>
+        <div class="notif-sub">4 pieces · limited stock · vadodara</div>
+        <div class="notif-btns">
+          <button class="nb-primary" onclick="window.location='/collections/all'">SHOP NOW</button>
+          <button class="nb-sec">REMIND ME LATER</button>
+        </div>
+        <div class="notif-input-wrap">
+          {% form 'customer', id: 'waitlist-form' %}
+            <input type="hidden" name="contact[tags]" value="waitlist">
+            <input class="notif-input" id="wlEmail" type="email" name="contact[email]" placeholder="{{ 'general.waitlist_placeholder' | t }}">
+            <button class="notif-submit" id="wlBtn" type="button">→</button>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Waitlist",
+  "settings": [
+    { "type": "richtext", "id": "heading", "label": "Heading" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "we'll reach out when it happens." }
+  ],
+  "presets": [{ "name": "Waitlist" }]
+}
+{% endschema %}

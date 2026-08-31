@@ -1,0 +1,79 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "BOHOO — NOT FOR EVERYONE",
+    "theme_version": "1.0.0",
+    "theme_author": "BOHOO Vadodara",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background",
+        "default": "#080808"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent (Acid Green)",
+        "default": "#c8ff00"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text Color",
+        "default": "#f5f5f0"
+      },
+      {
+        "type": "color",
+        "id": "color_red",
+        "label": "Red Accent",
+        "default": "#ff2222"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram URL",
+        "default": ""
+      },
+      {
+        "type": "text",
+        "id": "social_whatsapp",
+        "label": "WhatsApp Number",
+        "default": "8200669651"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook URL",
+        "default": ""
+      }
+    ]
+  },
+  {
+    "name": "Store Info",
+    "settings": [
+      {
+        "type": "text",
+        "id": "store_phone",
+        "label": "Store Phone Number",
+        "default": "8200669651"
+      },
+      {
+        "type": "text",
+        "id": "store_tagline",
+        "label": "Tagline",
+        "default": "NOT FOR EVERYONE."
+      }
+    ]
+  }
+]

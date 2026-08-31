@@ -1,0 +1,85 @@
+{
+  "general": {
+    "shop_name": "BOHOO",
+    "tagline": "Not for everyone.",
+    "search_placeholder": "SEARCH TEES, CAPS, BAGS...",
+    "add_to_cart": "QUICK BUY →",
+    "sold_out": "SOLD OUT",
+    "added_to_cart": "✓ ADDED",
+    "view_cart": "VIEW BAG",
+    "checkout": "CHECKOUT",
+    "continue_shopping": "CONTINUE SHOPPING",
+    "subtotal": "SUBTOTAL",
+    "cart_empty": "empty. fix that →",
+    "bag": "bag.",
+    "close": "✕",
+    "menu": "MENU",
+    "people_viewing": "PEOPLE VIEWING NOW",
+    "last_purchase": "LAST PURCHASE",
+    "next_drop": "NEXT DROP",
+    "pieces_sold": "PIECES SOLD SS25",
+    "left": "LEFT",
+    "new": "NEW",
+    "limited": "LIMITED",
+    "coming_soon": "SOON",
+    "get_directions": "GET DIRECTIONS →",
+    "cookie_text": "we use cookies. you probably don't care but legally we gotta say this.",
+    "cookie_accept": "OK COOL",
+    "cookie_decline": "NOPE",
+    "waitlist_placeholder": "drop your email or number",
+    "waitlist_success": "you're on the list ✓",
+    "shop_the_drop": "SHOP THE DROP",
+    "shop_the_look": "SHOP THE LOOK",
+    "find_your_fit": "FIND YOUR FIT.",
+    "search_desc": "Search premium streetwear, accessories & essentials.",
+    "no_matches": "NO MATCHES FOUND.",
+    "no_matches_sub": "Try another keyword or explore the latest drop.",
+    "featured_searches": "FEATURED SEARCHES",
+    "people_viewed_today": "people viewed today"
+  },
+  "sections": {
+    "hero": {
+      "dress": "DRESS",
+      "different": "DIFFERENT.",
+      "season": "SS25",
+      "location": "VADODARA · INDIA"
+    },
+    "ticker": {
+      "new_drop": "NEW DROP",
+      "pieces_left": "4 PIECES LEFT",
+      "location": "VADODARA",
+      "free_ship": "FREE SHIP ₹999+",
+      "season": "BOHOO SS25",
+      "tagline": "REAL ONES ONLY"
+    },
+    "statement": {
+      "word1": "NOT",
+      "word2": "FOR",
+      "word3": "EVERYONE.",
+      "footer": "premium streetwear from vadodara.<br>since whenever you discovered us."
+    },
+    "culture": {
+      "heading": "real ones"
+    },
+    "testimonials": {
+      "heading": "they said it.",
+      "subheading": "not us. them."
+    },
+    "store": {
+      "heading1": "irl.",
+      "heading2": "find us."
+    },
+    "waitlist": {
+      "heading": "don't<br>miss<br>the drop.",
+      "subheading": "we'll reach out when it happens."
+    },
+    "drop": {
+      "title": "THE DROP.",
+      "subtitle": "ss25 · 4 pieces · while they last"
+    },
+    "footer": {
+      "copyright": "© 2025 BOHOO. ALL RIGHTS RESERVED.",
+      "made_with_love": "MADE WITH ♥ IN VADODARA"
+    }
+  }
+}

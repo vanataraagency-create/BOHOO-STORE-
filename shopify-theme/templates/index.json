@@ -1,0 +1,150 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {}
+    },
+    "ticker": {
+      "type": "ticker",
+      "settings": {},
+      "blocks": {
+        "item1": { "type": "item", "settings": { "text": "NEW DROP" } },
+        "item2": { "type": "item", "settings": { "text": "4 PIECES LEFT" } },
+        "item3": { "type": "item", "settings": { "text": "VADODARA" } },
+        "item4": { "type": "item", "settings": { "text": "FREE SHIP ₹999+" } },
+        "item5": { "type": "item", "settings": { "text": "BOHOO SS25" } },
+        "item6": { "type": "item", "settings": { "text": "REAL ONES ONLY" } }
+      },
+      "block_order": ["item1", "item2", "item3", "item4", "item5", "item6"]
+    },
+    "category_nav": {
+      "type": "category-nav",
+      "settings": {}
+    },
+    "product_grid": {
+      "type": "product-grid",
+      "settings": {
+        "title": "THE DROP.",
+        "subtitle": "ss25 · limited pieces · while they last",
+        "products_limit": 8
+      }
+    },
+    "urgency_bar": {
+      "type": "urgency-bar",
+      "settings": {}
+    },
+    "culture_wall": {
+      "type": "culture-wall",
+      "settings": {
+        "heading": "real ones"
+      }
+    },
+    "statement": {
+      "type": "statement",
+      "settings": {}
+    },
+    "lookbook": {
+      "type": "lookbook",
+      "settings": {}
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {},
+      "blocks": {
+        "dm1": {
+          "type": "dm",
+          "settings": {
+            "handle": "@rahul.vadodara",
+            "msg_in_1": "bhai ye hoodie real mein itni heavy hai kya? 👀",
+            "msg_out_1": "320gsm cotton. test kar ke dekh. 🤝",
+            "msg_in_2": "bhai just ordered. 🙏",
+            "msg_in_3": "arrived. it's actually different 🔥🔥",
+            "reaction": "🔥🔥🔥",
+            "timestamp": "seen · yesterday 10:43 PM"
+          }
+        },
+        "dm2": {
+          "type": "dm",
+          "settings": {
+            "handle": "@sxb_aesthetics",
+            "msg_in_1": "shipping kitna time ahmedabad?",
+            "msg_out_1": "2-3 days. currently 2 days 🤝",
+            "msg_in_2": "ok placing order rn",
+            "msg_in_3": "the fit actually goes crazy 💀",
+            "timestamp": "seen · 2 days ago"
+          }
+        },
+        "dm3": {
+          "type": "dm",
+          "settings": {
+            "handle": "@mehsana.fits",
+            "msg_in_1": "cargo sold out kab hua 😭",
+            "msg_out_1": "restock aa raha. waitlist mein daal de.",
+            "msg_in_2": "done ✅",
+            "msg_in_3": "got it in restock. worth the wait fr 🫡",
+            "timestamp": "seen · 4 days ago"
+          }
+        }
+      },
+      "block_order": ["dm1", "dm2", "dm3"]
+    },
+    "store_locations": {
+      "type": "store-locations",
+      "settings": {
+        "phone": "8200669651"
+      },
+      "blocks": {
+        "loc1": {
+          "type": "location",
+          "settings": {
+            "city": "VADODARA",
+            "address": "<p>Shop No. 3, Ground Floor<br>Silver Empire, Nizampura<br>Vadodara — 390002</p>",
+            "active": true,
+            "coming_soon": false
+          }
+        },
+        "loc2": {
+          "type": "location",
+          "settings": {
+            "city": "AHMEDABAD",
+            "address": "<p>@bohoo_ahmedabad<br>Address dropping soon.</p>",
+            "active": false,
+            "coming_soon": true
+          }
+        },
+        "loc3": {
+          "type": "location",
+          "settings": {
+            "city": "MEHSANA",
+            "address": "<p>3rd Floor, T-48/49 Silver Cube<br>Radhanpur Road, Mehsana</p>",
+            "active": false,
+            "coming_soon": false
+          }
+        }
+      },
+      "block_order": ["loc1", "loc2", "loc3"]
+    },
+    "waitlist": {
+      "type": "waitlist",
+      "settings": {}
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "ticker",
+    "category_nav",
+    "product_grid",
+    "urgency_bar",
+    "culture_wall",
+    "statement",
+    "lookbook",
+    "testimonials",
+    "store_locations",
+    "waitlist",
+    "footer"
+  ]
+}

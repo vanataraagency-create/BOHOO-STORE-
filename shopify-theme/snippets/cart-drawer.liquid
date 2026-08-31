@@ -1,0 +1,31 @@
+<div class="cart-bd" id="cartBd"></div>
+<div id="cart">
+  <div class="cart-top">
+    <span class="cart-top-title">{{ 'general.bag' | t }}</span>
+    <button class="cart-x" id="cartX">✕</button>
+  </div>
+  <div class="cart-list" id="cartList">
+    <div class="cart-empty-state" id="cartEmpty" {% if cart.item_count > 0 %}style="display:none"{% endif %}>
+      <div class="cart-empty-icon">🛍</div>
+      <div class="cart-empty-txt">{{ 'general.cart_empty' | t }}</div>
+    </div>
+    {% for item in cart.items %}
+      <div class="cart-item">
+        <img class="ci-img" src="{{ item.image | image_url: width: 120 }}" alt="{{ item.title }}">
+        <div class="ci-info">
+          <div class="ci-name">{{ item.title }}</div>
+          <div class="ci-sz">SIZE: {{ item.variant.title | default: 'OS' }}{% if item.quantity > 1 %} · QTY: {{ item.quantity }}{% endif %}</div>
+          <div class="ci-pr">{{ item.price | money }}</div>
+        </div>
+        <button class="ci-rm" data-line="{{ item.key }}">×</button>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="cart-foot" id="cartFoot" {% if cart.item_count == 0 %}style="display:none"{% endif %}>
+    <div class="cart-sub">
+      <span class="cart-sub-label">{{ 'general.subtotal' | t }}</span>
+      <span class="cart-sub-amt" id="cartTotal">{{ cart.total_price | money }}</span>
+    </div>
+    <button class="checkout-btn">{{ 'general.checkout' | t }}</button>
+  </div>
+</div>

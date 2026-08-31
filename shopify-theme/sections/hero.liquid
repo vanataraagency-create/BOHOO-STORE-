@@ -1,0 +1,76 @@
+<section id="hero">
+  <div id="hero-video-bg">
+    {% if section.settings.hero_image %}
+      <img src="{{ section.settings.hero_image | image_url: width: 1920 }}" alt="{{ section.settings.hero_heading }}" loading="eager">
+    {% else %}
+      <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=1920&h=1080&fit=crop&crop=top" alt="Hero" loading="eager">
+    {% endif %}
+  </div>
+  <div class="hero-grad"></div>
+  <div class="grain"></div>
+  <div class="hero-type">
+    <div class="ht-dress" id="htDress">{{ section.settings.hero_heading | default: 'DRESS' }}</div>
+    <div class="ht-diff" id="htDiff">{{ section.settings.hero_subheading | default: 'DIFFERENT.' }}</div>
+  </div>
+  <div class="ht-meta">
+    <span>{{ section.settings.season | default: 'SS25' }}</span>
+    <span>{{ section.settings.location | default: 'VADODARA · INDIA' }}</span>
+  </div>
+  <div class="hero-cta-wrap" id="heroCta">
+    <a href="{{ section.settings.cta_link | default: '/collections/all' }}" class="btn-acid">{{ section.settings.cta_text | default: 'SHOP THE DROP' }}</a>
+  </div>
+  <div class="hero-scroll-line" id="heroLine"></div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Background Image"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Hero Heading",
+      "default": "DRESS"
+    },
+    {
+      "type": "text",
+      "id": "hero_subheading",
+      "label": "Hero Subheading",
+      "default": "DIFFERENT."
+    },
+    {
+      "type": "text",
+      "id": "season",
+      "label": "Season Tag",
+      "default": "SS25"
+    },
+    {
+      "type": "text",
+      "id": "location",
+      "label": "Location Tag",
+      "default": "VADODARA · INDIA"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "SHOP THE DROP"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,56 @@
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="f-logo">{{ shop.name }}</div>
+      <div class="f-tag">{{ settings.store_tagline | default: 'Not for everyone.' }}<br><em>Premium streetwear — Vadodara</em></div>
+    </div>
+    <div class="f-col">
+      <h4>SHOP</h4>
+      {% for link in section.settings.shop_menu.links %}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {% endfor %}
+    </div>
+    <div class="f-col">
+      <h4>INFO</h4>
+      {% for link in section.settings.info_menu.links %}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {% endfor %}
+    </div>
+    <div class="f-col">
+      <h4>CONTACT</h4>
+      {% if settings.store_phone != blank %}
+        <a href="tel:{{ settings.store_phone }}" class="f-phone">{{ settings.store_phone }}</a>
+      {% endif %}
+      {% if settings.social_instagram != blank %}
+        <a href="{{ settings.social_instagram }}">@bohoo_vadodara</a>
+      {% endif %}
+      {% if settings.social_whatsapp != blank %}
+        <a href="https://wa.me/{{ settings.social_whatsapp }}">Chat with us</a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="f-copy">© {{ 'now' | date: '%Y' }} {{ shop.name | upcase }}. ALL RIGHTS RESERVED.</span>
+    <span class="f-love">MADE WITH ♥ IN VADODARA</span>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "shop_menu",
+      "label": "Shop Menu",
+      "default": "footer"
+    },
+    {
+      "type": "link_list",
+      "id": "info_menu",
+      "label": "Info Menu",
+      "default": "footer"
+    }
+  ]
+}
+{% endschema %}
