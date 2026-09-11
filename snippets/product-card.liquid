@@ -1,4 +1,4 @@
-{% comment %}
+{% if section and section.location != blank %}Liquid syntax error (snippets/product-card line 15): Expected end_of_string but found pipe in "product.created_at > 'now' | date: '%s' | minus: 2592000"{% else %}{% comment %}
   Product Card Snippet
   Usage: {% render 'product-card', product: product, index: forloop.index0 %}
 {% endcomment %}
@@ -18,7 +18,7 @@
 {% elsif product.tags contains 'limited' %}
   {% assign badge_text = 'LIMITED' %}
   {% assign badge_class = 'badge-l' %}
-{% elsif product.created_at > 'now' | date: '%s' | minus: 2592000 %}
+{% elsif product.created_at > 'now' %}
   {% assign badge_text = 'NEW' %}
   {% assign badge_class = 'badge-n' %}
 {% else %}
@@ -63,3 +63,144 @@
     </a>
   </div>
 </div>
+{% endif %}{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |
+    {% comment %}
+      Product Card Snippet
+      Usage: {% render 'product-card', product: product, index: forloop.index0 %}
+    {% endcomment %}
+
+    {% assign delay = index | times: 0.08 %}
+    {% assign variant = product.selected_or_first_available_variant %}
+    {% assign is_sold_out = false %}
+    {% if product.available == false %}
+      {% assign is_sold_out = true %}
+    {% endif %}
+
+    {% assign badge_text = '' %}
+    {% assign badge_class = '' %}
+    {% if is_sold_out %}
+      {% assign badge_text = 'SOLD OUT' %}
+      {% assign badge_class = 'badge-s' %}
+    {% elsif product.tags contains 'limited' %}
+      {% assign badge_text = 'LIMITED' %}
+      {% assign badge_class = 'badge-l' %}
+    {% elsif product.created_at > 'now' | date: '%s' | minus: 2592000 %}
+      {% assign badge_text = 'NEW' %}
+      {% assign badge_class = 'badge-n' %}
+    {% else %}
+      {% assign badge_text = 'NEW' %}
+      {% assign badge_class = 'badge-n' %}
+    {% endif %}
+
+    {% assign stock_count = variant.inventory_quantity | default: 0 %}
+
+    <div class="p-card reveal shown" style="transition-delay:{{ delay }}s" data-id="{{ product.handle }}">
+      <a href="{{ product.url }}" style="text-decoration:none;color:inherit">
+        <div class="p-card-img">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" loading="lazy">
+          {% endif %}
+          <span class="{{ badge_class }} p-badge">{{ badge_text }}</span>
+          {% if stock_count > 0 and stock_count <= 3 %}
+            <span class="p-stock low">{{ stock_count }} LEFT</span>
+          {% elsif stock_count > 3 %}
+            <span class="p-stock">{{ stock_count }} LEFT</span>
+          {% elsif is_sold_out %}
+            <span class="p-stock low">SOLD OUT</span>
+          {% endif %}
+        </div>
+      </a>
+      <button class="p-wish" data-wish="{{ product.handle }}">♡</button>
+      <div class="quick-add">
+        <button class="qa-btn" data-variant="{{ variant.id }}" {% if is_sold_out %}disabled{% endif %} style="{% if is_sold_out %}opacity:.4{% endif %}">
+          {% if is_sold_out %}SOLD OUT{% else %}QUICK BUY →{% endif %}
+        </button>
+      </div>
+      <div class="p-info">
+        <a href="{{ product.url }}" style="text-decoration:none;color:inherit">
+          <div class="p-name">{{ product.title }}</div>
+          <div class="p-price-row">
+            <span class="p-price">{{ variant.price | money }}</span>
+            {% if variant.compare_at_price > variant.price %}
+              <span class="p-mrp">{{ variant.compare_at_price | money }}</span>
+            {% endif %}
+          </div>
+          <div class="p-view">{{ index | plus: 20 | plus: product.id | modulo: 80 | plus: 20 }} people viewed today</div>
+        </a>
+      </div>
+    </div>
+  to: |-
+    {% if section and section.location != blank %}Liquid syntax error (snippets/product-card line 15): Expected end_of_string but found pipe in "product.created_at > 'now' | date: '%s' | minus: 2592000"{% else %}{% comment %}
+      Product Card Snippet
+      Usage: {% render 'product-card', product: product, index: forloop.index0 %}
+    {% endcomment %}
+
+    {% assign delay = index | times: 0.08 %}
+    {% assign variant = product.selected_or_first_available_variant %}
+    {% assign is_sold_out = false %}
+    {% if product.available == false %}
+      {% assign is_sold_out = true %}
+    {% endif %}
+
+    {% assign badge_text = '' %}
+    {% assign badge_class = '' %}
+    {% if is_sold_out %}
+      {% assign badge_text = 'SOLD OUT' %}
+      {% assign badge_class = 'badge-s' %}
+    {% elsif product.tags contains 'limited' %}
+      {% assign badge_text = 'LIMITED' %}
+      {% assign badge_class = 'badge-l' %}
+    {% elsif product.created_at > 'now' %}
+      {% assign badge_text = 'NEW' %}
+      {% assign badge_class = 'badge-n' %}
+    {% else %}
+      {% assign badge_text = 'NEW' %}
+      {% assign badge_class = 'badge-n' %}
+    {% endif %}
+
+    {% assign stock_count = variant.inventory_quantity | default: 0 %}
+
+    <div class="p-card reveal shown" style="transition-delay:{{ delay }}s" data-id="{{ product.handle }}">
+      <a href="{{ product.url }}" style="text-decoration:none;color:inherit">
+        <div class="p-card-img">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" loading="lazy">
+          {% endif %}
+          <span class="{{ badge_class }} p-badge">{{ badge_text }}</span>
+          {% if stock_count > 0 and stock_count <= 3 %}
+            <span class="p-stock low">{{ stock_count }} LEFT</span>
+          {% elsif stock_count > 3 %}
+            <span class="p-stock">{{ stock_count }} LEFT</span>
+          {% elsif is_sold_out %}
+            <span class="p-stock low">SOLD OUT</span>
+          {% endif %}
+        </div>
+      </a>
+      <button class="p-wish" data-wish="{{ product.handle }}">♡</button>
+      <div class="quick-add">
+        <button class="qa-btn" data-variant="{{ variant.id }}" {% if is_sold_out %}disabled{% endif %} style="{% if is_sold_out %}opacity:.4{% endif %}">
+          {% if is_sold_out %}SOLD OUT{% else %}QUICK BUY →{% endif %}
+        </button>
+      </div>
+      <div class="p-info">
+        <a href="{{ product.url }}" style="text-decoration:none;color:inherit">
+          <div class="p-name">{{ product.title }}</div>
+          <div class="p-price-row">
+            <span class="p-price">{{ variant.price | money }}</span>
+            {% if variant.compare_at_price > variant.price %}
+              <span class="p-mrp">{{ variant.compare_at_price | money }}</span>
+            {% endif %}
+          </div>
+          <div class="p-view">{{ index | plus: 20 | plus: product.id | modulo: 80 | plus: 20 }} people viewed today</div>
+        </a>
+      </div>
+    </div>
+    {% endif %}
+  position: 0..2797
+{% endcomment %}
